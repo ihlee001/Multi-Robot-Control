@@ -1,0 +1,94 @@
+include "pioneer.inc"
+include "map.inc"
+include "sick.inc"
+
+# time to pause (in GUI mode) or quit (in headless mode (-g)) the simulation
+quit_time 3600 # 1 hour of simulated time
+
+paused 1
+
+# spatial resolution of the underlying occupancy grid. Default is 0.02m.
+resolution 0.02
+
+# set the multiple of real time that Stage should try to achieve. Default is 1. 
+# set to 0 to go as fast as possible.
+speedup 1 
+
+# configure the GUI window
+window
+(
+  size [ 635.000 666.000 ] # in pixels
+  scale 36.995   # pixels per meter
+  center [ -0.040  -0.274 ]
+  rotate [ 0  0 ]
+  			
+  show_data 1              # 1=on 0=off
+)
+
+# load an environment bitmap
+floorplan
+( 
+  name "cave"
+  size [16.000 16.000 0.800]
+  pose [0 0 0 0]
+  bitmap "bitmaps/cave.png"
+)
+
+
+define trickedoutpioneer pioneer2dx
+(
+  sicklaser( pose [0 0 0 0 ] )
+  localization "gps"
+  localization_origin [ 0 0 0 0 ]
+)
+
+trickedoutpioneer
+(
+  color "red"
+  name "p0"
+  pose [-5.645 3.034 0 -162.098]
+)
+
+trickedoutpioneer
+(	
+  color "NavyBlue"
+  name "p1"
+  pose [-7.009 2.481 0 165.780]
+)
+
+trickedoutpioneer
+(
+  color "orange"
+  name "p2"
+  pose [-6.009 2.481 0 165.780]
+)
+
+trickedoutpioneer
+(
+  color "green"
+  name "p3"
+  pose [-6.492 2.156 0 160.219]
+)
+
+trickedoutpioneer
+(
+  color "cyan"
+  name "p4"
+  pose [-7.641 3.989 0 -127.216]
+)
+
+trickedoutpioneer
+(
+  color "yellow"
+  name "p5"
+  pose [-6.759 3.634 0 -110.414]
+)
+
+trickedoutpioneer
+(
+  color "magenta"
+  name "p6"
+  pose [-6.232 3.440 0 -135.449]
+)
+
+
